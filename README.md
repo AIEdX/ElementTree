@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/Hqf8tjz/ettree-jpg.png" alt="ettree-jpg" border="0"></a><br /><a target='_blank' href='https://geojsonlint.com/'>geojson editor</a><br />
+<img src="https://i.ibb.co/Hqf8tjz/ettree-jpg.png" alt="ettree-jpg" border="0">
 </p>
 
 ---
