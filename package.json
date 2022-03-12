@@ -1,15 +1,19 @@
 {
-  "name": "appcomponents",
+  "name": "element-tree",
   "version": "0.0.0",
-  "description": "",
+  "description": "A TypeScript library for creating an interactive UI.",
   "type" : "module",
   "main": "out/ElementTree.js",
   "types": "out/ElementTree.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "url" : "https://github.com/Divine-Star-Software/ElementTree"
+  },
+  "homepage": "https://github.com/Divine-Star-Software/ElementTree",
+  "author": "Divine Star Software",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^4.6.2"
   }
