@@ -141,9 +141,9 @@ import { ElementTree } from "../../out/ElementTree.js";
 ```
 
 
-logo credit :
 
-[https://www.vecteezy.com/free-vector/human](Human Vectors by Vecteezy)
+logo credit:
+[Human Vectors by Vecteezy](https://www.vecteezy.com/free-vector/human)
 
 
 
