@@ -6,9 +6,20 @@ export type ElementTypes =
  | "span"
  | "pre"
  | "code"
+ | "embed"
+ | "object"
+ | "param"
+ | "picture"
+ | "source"
+ | "audio"
+ | "video"
+ | "track"
+ | "img"
+ | "svg"
  | "ul"
  | "ol"
  | "li"
+ | "nav"
  | "article"
  | "aside"
  | "section"
@@ -18,6 +29,10 @@ export type ElementTypes =
  | "input"
  | "label"
  | "textarea"
+ | "select"
+ | "option"
+ | "optiongroup"
+ | "datalist"
  | "button"
  | "a"
  | "canvas"
@@ -25,6 +40,8 @@ export type ElementTypes =
  | "table"
  | "th"
  | "thead"
+ | "tbody"
+ | "colgroup"
  | "tr"
  | "td"
  | "component"
@@ -43,7 +60,7 @@ export type ElementAttributes = {
  cssText?: string;
  name?: string;
  type?: string;
- dataSet?: Record<string, any>;
+ dataSet?: Record<string, string>;
  required?: boolean;
  checked?: boolean;
 };
@@ -85,28 +102,28 @@ export type ElementEvents =
  | "onDragStart"
  | "onDrop";
 
- export type InputValueTypes = "string" | "number" | "boolean"; 
+export type InputValueTypes = "string" | "number" | "boolean";
 
 export type ElementTreeObject = {
  type: ElementTypes;
  component?: {
-   func: Component<any>;
-   stateProps: any;
-   stateObject: Readonly<any>;
-  };
- cascade?: {
-    origin :  any;
-    receiver : (elm : any, cascadeProps : any)=>void;
+  func: Component<any>;
+  stateProps: any;
+  stateObject: Readonly<any>;
  };
- bindInput ?: {
-    bindTo : any,
-    objectPropertyName : string,
-    valueType : InputValueTypes;
+ cascade?: {
+  origin: any;
+  receiver: (elm: any, cascadeProps: any) => void;
+ };
+ bindInput?: {
+  bindTo: any;
+  objectPropertyName: string;
+  valueType: InputValueTypes;
  };
  toRef?: {
-   refObj: any;
-   refObjProperty: string;
-  };
+  refObj: any;
+  refObjProperty: string;
+ };
  attrs?: ElementAttributes;
  events?: { [K in ElementEvents]?: Function };
  text?: string;

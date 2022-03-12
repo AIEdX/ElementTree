@@ -33,6 +33,36 @@ export const elementCreateFunctions: Record<ElementTypes, Function> = {
  code: () => {
   return document.createElement("code");
  },
+ embed: () => {
+  return document.createElement("embed");
+ },
+ param: () => {
+  return document.createElement("param");
+ },
+ object: () => {
+  return document.createElement("object");
+ },
+ picture: () => {
+  return document.createElement("picture");
+ },
+ source: () => {
+  return document.createElement("source");
+ },
+ audio: () => {
+  return document.createElement("audio");
+ },
+ video: () => {
+  return document.createElement("video");
+ },
+ track: () => {
+  return document.createElement("video");
+ },
+ img: () => {
+  return document.createElement("img");
+ },
+ svg: () => {
+  return document.createElement("svg");
+ },
  ul: () => {
   return document.createElement("ul");
  },
@@ -44,6 +74,9 @@ export const elementCreateFunctions: Record<ElementTypes, Function> = {
  },
  article: () => {
   return document.createElement("article");
+ },
+ nav: () => {
+  return document.createElement("nav");
  },
  aside: () => {
   return document.createElement("aside");
@@ -69,6 +102,18 @@ export const elementCreateFunctions: Record<ElementTypes, Function> = {
  textarea: () => {
   return document.createElement("textarea");
  },
+ select: () => {
+  return document.createElement("select");
+ },
+ option: () => {
+  return document.createElement("option");
+ },
+ optiongroup: () => {
+  return document.createElement("optiongroup");
+ },
+ datalist: () => {
+  return document.createElement("datalist");
+ },
  button: () => {
   return document.createElement("button");
  },
@@ -89,6 +134,12 @@ export const elementCreateFunctions: Record<ElementTypes, Function> = {
  },
  thead: () => {
   return document.createElement("thead");
+ },
+ tbody: () => {
+  return document.createElement("tbody");
+ },
+ colgroup: () => {
+  return document.createElement("colgroup");
  },
  tr: () => {
   return document.createElement("tr");
