@@ -1,12 +1,18 @@
 import type { Component } from "../../out/Meta/Components/Component.type";
-
 import { ElementTree } from "../../out/ElementTree.js";
+import { PElement } from "./Elements/PElement";
 (() => {
-
  type AppComponentProps<T> = {
   stateObject: T;
  };
  type AppState = { i: number };
+
+ const elementTreeData = [
+  PElement("test 1", "p1"),
+  PElement("test 2", "p1"),
+  PElement("test 3", "p1"),
+  PElement("test 4", "p1"),
+ ];
 
  const boundInput = {
   text: "",
@@ -119,6 +125,4 @@ import { ElementTree } from "../../out/ElementTree.js";
   i++;
   setAppState({ i: i });
  }, 2000);
-
- (window as any).ElementTree = ElementTree;
 })();

@@ -16,127 +16,34 @@ It requires no bundler or transpiler. It can be used with TypeScript or plain JS
 Here is an example of how to use it:
 
 ```ts
-import type { Component } from "../../out/Meta/Components/Component.type";
-import { ElementTree } from "../../out/ElementTree.js";
+import { ElementTree } from "ElementTree.js";
+
 (() => {
- type AppComponentProps<T> = {
-  stateObject: T;
+ const cascadeProps = {
+  time: new Date().toLocaleTimeString(),
  };
- type AppState = { i: number };
 
- const boundInput = {
-  text: "",
- };
- const cascadeProps = { i: 0 };
- ElementTree.register.add("cascade", cascadeProps);
- const AppComponent: Component<AppState> = (
-  props: AppComponentProps<AppState>
- ) => {
-  const cascadeProps = ElementTree.register.get("cascade");
-  const [cascade, releaseCascade] = ElementTree.cascade(cascadeProps);
-  const [state, setState, stateProps] = ElementTree.stateful<
-   AppComponentProps<AppState>,
-   AppState
-  >(props, props.stateObject, releaseCascade);
+ const [cascade] = ElementTree.cascade(cascadeProps);
 
-  return [
-   [
-    {
-     type: "component",
-     component: {
-      func: AppComponent,
-      stateProps: stateProps,
-      stateObject: state,
-     },
-     children: [
-      {
-       type: "div",
-       cascade: {
-        origin: cascadeProps,
-        receiver: (elm: HTMLElement, cascadeProps: any) => {
-         cascadeProps.i++;
-        },
-       },
-       events: {
-        onClick: () => {
-         cascade();
-        },
-       },
-       children: [
-        {
-         type: "input",
-         attrs: {
-          type: "text",
-         },
-         bindInput: {
-          bindTo: boundInput,
-          objectPropertyName: "text",
-          valueType: "string",
-         },
-        },
-        {
-         type: "p",
-         cascade: {
-          origin: cascadeProps,
-          receiver: (elm: HTMLElement, cascadeProps: any) => {
-           elm.innerText = `cascaded : ${cascadeProps.i}`;
-           cascadeProps.i++;
-          },
-         },
-         children: [
-          {
-           type: "text",
-           text: "this is a test",
-          },
-         ],
-        },
-        {
-         type: "p",
-         cascade: {
-          origin: cascadeProps,
-          receiver: (elm: HTMLElement, cascadeProps: any) => {
-           elm.innerText = `cascaded : ${cascadeProps.i}`;
-          },
-         },
-         children: [
-          {
-           type: "text",
-           text: "this is a test",
-          },
-         ],
-        },
-        {
-         type: "p",
-         children: [
-          {
-           type: "text",
-           text: "state: " + state.i,
-          },
-         ],
-        },
-       ],
-      },
-     ],
+ ElementTree.bloomRoot([
+  {
+   type: "p",
+   cascade: {
+    origin: cascadeProps,
+    receiver: (elm: HTMLElement, props: typeof cascadeProps) => {
+     elm.innerText = props.time;
     },
-   ],
-   setState,
-  ];
- };
+   },
+   text : new Date().toLocaleTimeString()
+  },
+ ]);
 
- const props: AppComponentProps<AppState> = {
-  stateObject: { i: 0 },
- };
-
- const [AppTree, setAppState] = AppComponent(props);
- ElementTree.bloomRoot(AppTree);
-
- let i = 0;
  setInterval(() => {
-  i++;
-  setAppState({ i: i });
- }, 2000);
-
+  cascadeProps.time = new Date().toLocaleTimeString();
+  cascade();
+ }, 1000);
 })();
+
 
 ```
 
