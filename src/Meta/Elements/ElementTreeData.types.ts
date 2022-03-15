@@ -2,6 +2,8 @@ import { Component } from "Meta/Components/Component.type";
 import { ElementAttributes } from "./ElementAttributes.types";
 
 export type ElementTypes =
+ | "component"
+ | "rawHTML"
  | "fragment"
  | "div"
  | "span"
@@ -17,7 +19,7 @@ export type ElementTypes =
  | "track"
  | "img"
  | "svg"
- | "ul"
+ | "ul" 
  | "ol"
  | "li"
  | "nav"
@@ -46,7 +48,6 @@ export type ElementTypes =
  | "colgroup"
  | "tr"
  | "td"
- | "component"
  | "text"
  | "p"
  | "h1"
@@ -117,7 +118,8 @@ export type ElementTreeObject = {
  };
  attrs?: ElementAttributes;
  events?: { [K in ElementEvents]?: Function };
- text?: string;
+ text?:string;
+ rawHTML?:string;
  children?: ElementTreeData;
 };
 

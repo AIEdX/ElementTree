@@ -1,10 +1,10 @@
 {
   "name": "ds-element-tree",
-  "version": "0.0.02",
+  "version": "0.0.03",
   "description": "A TypeScript library for creating an interactive UI.",
   "type" : "module",
-  "main": "out/ElementTree.js",
-  "types": "out/ElementTree.d.ts",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

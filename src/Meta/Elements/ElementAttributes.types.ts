@@ -27,8 +27,6 @@ export type ElementAttributes = {
  className?: string;
  cssText?: string;
  dataSet?: Record<string, string>;
-
-
  accesskey ?: string;
  contenteditable ?: boolean;
  dir ?: string;
@@ -187,7 +185,6 @@ export type ElementAttributes = {
   srclang?: string;
  };
  aria?: {
-  //widget
   autocomplete?: boolean;
   checked?: boolean;
   disabled?: boolean;
@@ -209,16 +206,12 @@ export type ElementAttributes = {
   valuenow?: number;
   valuemin?: number;
   valuetext?: string;
-  //live region
   busy?: boolean;
   live?: "assertive" | "polite" | "off";
   atomic?: boolean;
-  //reltionship
   colcount?: number;
   colindex?: number;
   colspan?: number;
-
-
   posinset?: number;
   rowcount?: number;
   rowindex?: number;

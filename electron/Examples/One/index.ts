@@ -1,4 +1,4 @@
-import type { Component } from "../../out/Meta/index";
+import type { Component } from "../../out/index.js";
 import { ElementTree } from "../../out/index.js";
 (() => {
  type AppComponentProps<T> = {
@@ -47,7 +47,7 @@ import { ElementTree } from "../../out/index.js";
         {
          type: "input",
          attrs: {
-          inputs: {
+          input: {
            type: "text",
           },
          },

@@ -36,7 +36,7 @@ import { ElementTree } from "../../out/index.js";
                                 {
                                     type: "input",
                                     attrs: {
-                                        inputs: {
+                                        input: {
                                             type: "text",
                                         },
                                     },

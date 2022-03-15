@@ -173,9 +173,23 @@ export const elementCreateFunctions: Record<ElementTypes, Function> = {
  },
  text: (elmObj: ElementTreeObject, elementCreator: ElementCreator) => {
   if (!elmObj.text) {
-   throw new Error('Text element must the "test" property set on the object.');
+   throw new Error('Text element must the "text" property set on the object.');
   }
   return document.createTextNode(elmObj.text);
  },
  component: processComponent,
+ rawHTML: (elmObj: ElementTreeObject, elementCreator: ElementCreator) => {
+  if (!elmObj.rawHTML) {
+   throw new Error(
+    'rawHTML element must the "rawHTML" property set on the object.'
+   );
+  }
+  const temp = document.createElement("div");
+  temp.innerHTML = elmObj.rawHTML;
+  if (!temp.firstChild) {
+   return document.createDocumentFragment();
+  } else {
+   return temp.firstChild;
+  }
+ },
 };
