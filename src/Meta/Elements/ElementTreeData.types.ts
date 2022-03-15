@@ -54,15 +54,104 @@ export type ElementTypes =
  | "h5"
  | "h6";
 
+export type HTMLInputTypes =
+ | "button"
+ | "checkbox"
+ | "color"
+ | "date"
+ | "datetime-local"
+ | "email"
+ | "file"
+ | "hidden"
+ | "image"
+ | "month"
+ | "number"
+ | "password"
+ | "radio"
+ | "range"
+ | "reset"
+ | "search"
+ | "submit"
+ | "tel"
+ | "text"
+ | "time"
+ | "url"
+ | "week";
+
 export type ElementAttributes = {
  id?: string;
  className?: string;
  cssText?: string;
- name?: string;
- type?: string;
+ target?: string;
  dataSet?: Record<string, string>;
- required?: boolean;
- checked?: boolean;
+ forms?: {
+  action?: string;
+  method?: string;
+  novalidate?: boolean;
+  autocomplete?: boolean;
+  acceptCharset?: string;
+  enctype?: string;
+ };
+ inputs?: {
+  name?: string;
+  required?: boolean;
+  checked?: boolean;
+  type?: HTMLInputTypes;
+  value?: string | number;
+ };
+ aria?: {
+  //widget
+  autocomplete?: boolean;
+  checked?: boolean;
+  disabled?: boolean;
+  errormessage?: string;
+  expanded?: boolean;
+  haspopup?: boolean;
+  hidden?: boolean;
+  invalid?: "spelling" | "grammar" | "false" | "true";
+  label?: string;
+  modal?: boolean;
+  multiline?: boolean;
+  multiselecttable?: boolean;
+  orientation?: boolean;
+  placeholder?: string;
+  pressed?: boolean;
+  readyonly?: boolean;
+  required?: boolean;
+  selected?: boolean;
+  sorted?: "ascending" | "descending" | "none" | "other";
+  valuemax?: number;
+  valuenow?: number;
+  valuemin?: number;
+  valuetext?: string;
+  //live region
+  busy?: boolean;
+  live?: "assertive" | "polite" | "off";
+  relevant?: "additions" | "all" | "text" | "additions text";
+  atomic?: boolean;
+  //drag n drop
+  dropeffect?: "copy" | "execute" | "link" | "move" | "none" | "popup";
+  grabbed?: "true" | "false" | "undefined";
+  //reltionship
+  activedescendant?: string;
+  colcount?: number;
+  colindex?: number;
+  colspan?: number;
+  controls?: string;
+  describedby?: string;
+  description?: string;
+  details?: string;
+  flowto?: string;
+  labelledby?: string;
+  owns?: string;
+  posinset?: number;
+  rowcount?: number;
+  rowindex?: number;
+  rowspan?: number;
+  setsize?: number;
+  roledescription?: string;
+  keyshortcuts?: string;
+ };
 };
 export type ElementAttributeList = keyof ElementAttributes;
 

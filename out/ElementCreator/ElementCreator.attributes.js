@@ -8,17 +8,31 @@ export const attributeSetFunction = {
     cssText: (elm, cssText) => {
         elm.style.cssText = cssText;
     },
-    name: (elm, name) => {
-        elm.name = name;
+    target: (elm, data) => {
+        if (!data.target)
+            return;
+        elm.target = data.target;
     },
-    type: (elm, type) => {
-        elm.type = type;
+    inputs: (elm, data) => {
+        if (!data.inputs)
+            return;
+        if (data.inputs.type) {
+            elm.type = data.inputs.type;
+        }
+    },
+    forms: (elm, data) => {
+        if (!data.inputs)
+            return;
+        if (data.inputs.type) {
+            elm.type = data.inputs.type;
+        }
+    },
+    aria: (elm, data) => {
+        if (!data.inputs)
+            return;
+        if (data.inputs.type) {
+            elm.type = data.inputs.type;
+        }
     },
     dataSet: (elm, id) => { },
-    required: (elm, set) => {
-        elm.required = set;
-    },
-    checked: (elm, set) => {
-        elm.checked = set;
-    },
 };

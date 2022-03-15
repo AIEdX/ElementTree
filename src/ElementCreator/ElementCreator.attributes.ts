@@ -1,26 +1,39 @@
-import { ElementAttributeList } from "Meta/Elements/ElementTreeData.types";
+import {
+ ElementAttributeList,
+ ElementAttributes,
+} from "Meta/Elements/ElementTreeData.types";
 
-export const attributeSetFunction : Record<ElementAttributeList, Function> = {
-    id: (elm: HTMLElement, id: string) => {
-     elm.id = id;
-    },
-    className: (elm: HTMLElement, className: string) => {
-     elm.className = className;
-    },
-    cssText: (elm: HTMLElement, cssText: string) => {
-     elm.style.cssText = cssText;
-    },
-    name: (elm: HTMLInputElement, name: string) => {
-     elm.name = name;
-    },
-    type: (elm: HTMLInputElement, type: string) => {
-     elm.type = type;
-    },
-    dataSet: (elm: HTMLElement, id: string) => {},
-    required: (elm: HTMLInputElement, set: boolean) => {
-     elm.required = set;
-    },
-    checked: (elm: HTMLInputElement, set: boolean) => {
-     elm.checked = set;
-    },
-   };
+export const attributeSetFunction: Record<ElementAttributeList, Function> = {
+ id: (elm: HTMLElement, id: string) => {
+  elm.id = id;
+ },
+ className: (elm: HTMLElement, className: string) => {
+  elm.className = className;
+ },
+ cssText: (elm: HTMLElement, cssText: string) => {
+  elm.style.cssText = cssText;
+ },
+ target: (elm: HTMLFormElement, data: ElementAttributes) => {
+  if (!data.target) return;
+  elm.target = data.target;
+ },
+ inputs: (elm: HTMLInputElement, data: ElementAttributes) => {
+  if (!data.inputs) return;
+  if (data.inputs.type) {
+   elm.type = data.inputs.type;
+  }
+ },
+ forms: (elm: HTMLInputElement, data: ElementAttributes) => {
+  if (!data.inputs) return;
+  if (data.inputs.type) {
+   elm.type = data.inputs.type;
+  }
+ },
+ aria: (elm: HTMLInputElement, data: ElementAttributes) => {
+  if (!data.inputs) return;
+  if (data.inputs.type) {
+   elm.type = data.inputs.type;
+  }
+ },
+ dataSet: (elm: HTMLElement, id: string) => {},
+};

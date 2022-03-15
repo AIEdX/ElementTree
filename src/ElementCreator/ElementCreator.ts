@@ -88,8 +88,7 @@ export class ElementCreator {
 
    if (elmObj.attrs) {
     for (const attribute of Object.keys(elmObj.attrs)) {
-     const value = (elmObj as any).attrs[attribute];
-     (this as any).attributeSetFunction[attribute](elm, value);
+     (this as any).attributeSetFunction[attribute](elm, elmObj.attrs);
     }
    }
 
