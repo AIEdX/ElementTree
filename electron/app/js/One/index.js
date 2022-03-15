@@ -1,12 +1,5 @@
-import { ElementTree } from "../../out/ElementTree.js";
-import { PElement } from "./Elements/PElement";
+import { ElementTree } from "../../out/index.js";
 (() => {
-    const elementTreeData = [
-        PElement("test 1", "p1"),
-        PElement("test 2", "p1"),
-        PElement("test 3", "p1"),
-        PElement("test 4", "p1"),
-    ];
     const boundInput = {
         text: "",
     };
@@ -43,7 +36,9 @@ import { PElement } from "./Elements/PElement";
                                 {
                                     type: "input",
                                     attrs: {
-                                        type: "text",
+                                        inputs: {
+                                            type: "text",
+                                        },
                                     },
                                     bindInput: {
                                         bindTo: boundInput,

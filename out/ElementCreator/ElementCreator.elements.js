@@ -104,6 +104,9 @@ export const elementCreateFunctions = {
     datalist: () => {
         return document.createElement("datalist");
     },
+    hr: () => {
+        return document.createElement("hr");
+    },
     button: () => {
         return document.createElement("button");
     },

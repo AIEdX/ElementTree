@@ -72,8 +72,7 @@ export class ElementCreator {
             }
             if (elmObj.attrs) {
                 for (const attribute of Object.keys(elmObj.attrs)) {
-                    const value = elmObj.attrs[attribute];
-                    this.attributeSetFunction[attribute](elm, value);
+                    this.attributeSetFunction[attribute](elm, elmObj.attrs);
                 }
             }
             if (elmObj.events) {

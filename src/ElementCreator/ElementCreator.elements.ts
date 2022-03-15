@@ -114,6 +114,9 @@ export const elementCreateFunctions: Record<ElementTypes, Function> = {
  datalist: () => {
   return document.createElement("datalist");
  },
+ hr: () => {
+  return document.createElement("hr");
+ },
  button: () => {
   return document.createElement("button");
  },
