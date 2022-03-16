@@ -1,3 +1,3 @@
-export * from "./ElementAttributes.types";
-export * from "./ElementTreeData.types";
-export * from "./ElementTreeElement.types";
+export * from "./ElementAttributes.types.js";
+export * from "./ElementTreeData.types.js";
+export * from "./ElementTreeElement.types.js";

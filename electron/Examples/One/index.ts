@@ -90,12 +90,7 @@ import { ElementTree } from "../../out/index.js";
         },
         {
          type: "p",
-         children: [
-          {
-           type: "text",
-           text: "state: " + state.i,
-          },
-         ],
+         text: "state: " + state.i,
         },
        ],
       },
