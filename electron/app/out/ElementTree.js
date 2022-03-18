@@ -1,13 +1,20 @@
+import { CSSLinker } from "./CSSLinker/CSSLinker.js";
 import { Controller } from "./Controler/Controler.js";
 import { ElementCreator } from "./ElementCreator/ElementCreator.js";
 export const ElementTree = {
     controller: new Controller(),
     elementCreator: new ElementCreator(),
+    CSSLinker: new CSSLinker(),
     bloomRoot: function (tree) {
         this.elementCreator.createElements(tree, document.body);
     },
     bloomBranch: function (tree, elm) {
         this.elementCreator.createElements(tree, elm);
+    },
+    decayRoot: function () { },
+    decayBranch: function (elm) { },
+    registerCSS: function (path, importMetalURL) {
+        this.CSSLinker.loadAndAppendCSS(path, importMetalURL);
     },
     stateful: function (props, data, onChange = () => { }) {
         let statefulObject;

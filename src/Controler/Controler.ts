@@ -20,6 +20,11 @@ export class Controller {
   }
  > = {};
 
+ releaseAll() {
+  this.statefulObjectMap = {};
+  this.cascadeObjectMap = {};
+ }
+
  //@ts-ignore
  elementTree: ElementTreeInterface;
 
@@ -58,6 +63,7 @@ export class Controller {
     elmObj.cascade.receiver
    );
   }
+  elm.dataset["__cascade"] = elmObj.cascade.origin.__id;
  }
 
  runCascade(props: any) {
@@ -73,6 +79,14 @@ export class Controller {
   if (!this.cascadeObjectMap[props.__id]) return false;
   delete this.cascadeObjectMap[props.__id];
   delete props.__id;
+  return true;
+ }
+
+ releaseElementFromCascade(id: string, elm: HTMLElement) {
+  if (!this.cascadeObjectMap[id]) return false;
+  const elms = this.cascadeObjectMap[id].elements;
+  if (!elms.get(elm)) return false;
+  elms.delete(elm);
   return true;
  }
 
@@ -100,6 +114,16 @@ export class Controller {
   const data = this.statefulObjectMap[props.__id];
   if (!data) return false;
   data.state = newState;
+  const elm = data.parentElement;
+
+  if (elm.children.length > 0) {
+   for (let i = 0; i < elm.children.length; i++) {
+    this.elementTree.elementCreator.safetlyRemoveElement(
+     (elm as any).children[i]
+    );
+   }
+  }
+
   data.parentElement.innerHTML = "";
   onChange();
   this.elementTree.elementCreator.createElements(

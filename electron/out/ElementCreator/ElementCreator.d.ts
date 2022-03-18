@@ -9,4 +9,7 @@ export declare class ElementCreator {
     constructor();
     _traverseElementTree(tree: ElementTreeData, parentElm: HTMLElement | DocumentFragment): void;
     createElements(tree: ElementTreeData, parentElm: HTMLElement): void;
+    safetlyRemoveAll(): void;
+    safetlyRemoveElement(elm: HTMLElement): void;
+    _traverseRemoveElements(elm: HTMLElement, cascadeElements: Record<string, HTMLElement[]>): void;
 }

@@ -1,12 +1,16 @@
+import { CSSLinker } from "./CSSLinker/CSSLinker.js";
 import { ElementTreeData } from "Meta/Elements/ElementTreeData.types.js";
-import { ElementTreeInterface } from "Meta/ElementTree.interface.js";
 import { Controller } from "./Controler/Controler.js";
 import { ElementCreator } from "./ElementCreator/ElementCreator.js";
 export declare const ElementTree: {
     controller: Controller;
     elementCreator: ElementCreator;
-    bloomRoot: (this: ElementTreeInterface, tree: ElementTreeData) => void;
-    bloomBranch: (this: ElementTreeInterface, tree: ElementTreeData, elm: HTMLElement) => void;
+    CSSLinker: CSSLinker;
+    bloomRoot: (tree: ElementTreeData) => void;
+    bloomBranch: (tree: ElementTreeData, elm: HTMLElement) => void;
+    decayRoot: () => void;
+    decayBranch: (elm: HTMLElement) => void;
+    registerCSS: (path: string, importMetalURL: string) => void;
     stateful: <K, T>(props: K, data: T, onChange?: Function) => [T, (set: Record<keyof T, any>) => void, K];
     cascade: (props: any) => [() => boolean, () => boolean];
     register: {

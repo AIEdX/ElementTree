@@ -1,3 +1,4 @@
+import { CSSLinker } from "./CSSLinker/CSSLinker.js";
 import { Component } from "Meta/Components/Component.type.js";
 import { ElementTreeData } from "Meta/Elements/ElementTreeData.types.js";
 import { ElementTreeInterface } from "Meta/ElementTree.interface.js";
@@ -7,20 +8,23 @@ import { ElementCreator } from "./ElementCreator/ElementCreator.js";
 export const ElementTree = {
  controller: new Controller(),
  elementCreator: new ElementCreator(),
- bloomRoot: function (this: ElementTreeInterface, tree: ElementTreeData) {
+ CSSLinker: new CSSLinker(),
+ bloomRoot: function (tree: ElementTreeData) {
   this.elementCreator.createElements(tree, document.body);
  },
- bloomBranch: function (
-  this: ElementTreeInterface,
-  tree: ElementTreeData,
-  elm: HTMLElement
- ) {
+ bloomBranch: function (tree: ElementTreeData, elm: HTMLElement) {
   this.elementCreator.createElements(tree, elm);
+ },
+
+ decayRoot: function () {},
+ decayBranch: function (elm: HTMLElement) {},
+ registerCSS: function (path: string, importMetalURL: string) {
+  this.CSSLinker.loadAndAppendCSS(path, importMetalURL);
  },
  stateful: function <K, T>(
   props: K,
   data: T,
-  onChange : Function  = ()=>{}
+  onChange: Function = () => {}
  ): [T, (set: Record<keyof T, any>) => void, K] {
   let statefulObject: any;
 
@@ -53,7 +57,7 @@ export const ElementTree = {
      }
     }
 
-    ElementTree.controller.runStateChange(props, newState,onChange);
+    ElementTree.controller.runStateChange(props, newState, onChange);
    },
    props,
   ];
@@ -71,7 +75,7 @@ export const ElementTree = {
  },
  register: {
   __register: <Record<string, any>>{},
-  add: function (id: string, props: any ) {
+  add: function (id: string, props: any) {
    if ((this as any).get(id)) return false;
    (this as any).__register[id] = props;
    return true;

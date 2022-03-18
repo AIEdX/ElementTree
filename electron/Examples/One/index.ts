@@ -1,5 +1,6 @@
 import type { Component } from "../../out/index.js";
 import { ElementTree } from "../../out/index.js";
+import { PElement } from "./Elements/PElement.js";
 (() => {
  type AppComponentProps<T> = {
   stateObject: T;
@@ -8,8 +9,9 @@ import { ElementTree } from "../../out/index.js";
  const boundInput = {
   text: "",
  };
- const cascadeProps = { i: 0 };
- ElementTree.register.add("cascade", cascadeProps);
+ const test = PElement;
+ const appCascadeProps = { i: 0 };
+ ElementTree.register.add("cascade", appCascadeProps);
  const AppComponent: Component<AppState> = (
   props: AppComponentProps<AppState>
  ) => {
@@ -34,7 +36,7 @@ import { ElementTree } from "../../out/index.js";
        type: "div",
        cascade: {
         origin: cascadeProps,
-        receiver: (elm: HTMLElement, cascadeProps: any) => {
+        receiver: (elm: HTMLElement, cascadeProps: typeof appCascadeProps) => {
          cascadeProps.i++;
         },
        },
@@ -59,34 +61,24 @@ import { ElementTree } from "../../out/index.js";
         },
         {
          type: "p",
+         text: "this is a test",
          cascade: {
           origin: cascadeProps,
-          receiver: (elm: HTMLElement, cascadeProps: any) => {
+          receiver: (elm: HTMLElement, cascadeProps:  typeof appCascadeProps) => {
            elm.innerText = `cascaded : ${cascadeProps.i}`;
            cascadeProps.i++;
           },
          },
-         children: [
-          {
-           type: "text",
-           text: "this is a test",
-          },
-         ],
         },
-        {
+        { 
          type: "p",
+         text: "this is a test",
          cascade: {
           origin: cascadeProps,
-          receiver: (elm: HTMLElement, cascadeProps: any) => {
+          receiver: (elm: HTMLElement, cascadeProps:  typeof appCascadeProps) => {
            elm.innerText = `cascaded : ${cascadeProps.i}`;
           },
          },
-         children: [
-          {
-           type: "text",
-           text: "this is a test",
-          },
-         ],
         },
         {
          type: "p",

@@ -1,27 +1,24 @@
 import { ElementTree } from "../../out/ElementTree.js";
+const cascadeProps = {
+ time: new Date().toLocaleTimeString(),
+};
 
-(() => {
- const cascadeProps = {
-  time: new Date().toLocaleTimeString(),
- };
+const [cascade] = ElementTree.cascade(cascadeProps);
 
- const [cascade] = ElementTree.cascade(cascadeProps);
-
- ElementTree.bloomRoot([
-  {
-   type: "p",
-   cascade: {
-    origin: cascadeProps,
-    receiver: (elm: HTMLElement, props: typeof cascadeProps) => {
-     elm.innerText = props.time;
-    },
+ElementTree.bloomRoot([
+ {
+  type: "p",
+  cascade: {
+   origin: cascadeProps,
+   receiver: (elm: HTMLElement, props: typeof cascadeProps) => {
+    elm.innerText = props.time;
    },
-   text : new Date().toLocaleTimeString()
   },
- ]);
+  text: new Date().toLocaleTimeString(),
+ },
+]);
 
- setInterval(() => {
-  cascadeProps.time = new Date().toLocaleTimeString();
-  cascade();
- }, 1000);
-})();
+setInterval(() => {
+ cascadeProps.time = new Date().toLocaleTimeString();
+ cascade();
+}, 1000);

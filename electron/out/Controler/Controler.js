@@ -1,6 +1,10 @@
 export class Controller {
     statefulObjectMap = {};
     cascadeObjectMap = {};
+    releaseAll() {
+        this.statefulObjectMap = {};
+        this.cascadeObjectMap = {};
+    }
     //@ts-ignore
     elementTree;
     registerStatefulComponent(elmObj, parentElm) {
@@ -34,6 +38,7 @@ export class Controller {
         else {
             this.cascadeObjectMap[elmObj.cascade.origin.__id].elements.set(elm, elmObj.cascade.receiver);
         }
+        elm.dataset["__cascade"] = elmObj.cascade.origin.__id;
     }
     runCascade(props) {
         const data = this.cascadeObjectMap[props.__id];
@@ -49,6 +54,15 @@ export class Controller {
             return false;
         delete this.cascadeObjectMap[props.__id];
         delete props.__id;
+        return true;
+    }
+    releaseElementFromCascade(id, elm) {
+        if (!this.cascadeObjectMap[id])
+            return false;
+        const elms = this.cascadeObjectMap[id].elements;
+        if (!elms.get(elm))
+            return false;
+        elms.delete(elm);
         return true;
     }
     __unqiueId4() {
@@ -75,6 +89,12 @@ export class Controller {
         if (!data)
             return false;
         data.state = newState;
+        const elm = data.parentElement;
+        if (elm.children.length > 0) {
+            for (let i = 0; i < elm.children.length; i++) {
+                this.elementTree.elementCreator.safetlyRemoveElement(elm.children[i]);
+            }
+        }
         data.parentElement.innerHTML = "";
         onChange();
         this.elementTree.elementCreator.createElements([data.component(props)[0]], data.parentElement);

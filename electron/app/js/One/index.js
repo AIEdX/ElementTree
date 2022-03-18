@@ -1,10 +1,12 @@
 import { ElementTree } from "../../out/index.js";
+import { PElement } from "./Elements/PElement.js";
 (() => {
     const boundInput = {
         text: "",
     };
-    const cascadeProps = { i: 0 };
-    ElementTree.register.add("cascade", cascadeProps);
+    const test = PElement;
+    const appCascadeProps = { i: 0 };
+    ElementTree.register.add("cascade", appCascadeProps);
     const AppComponent = (props) => {
         const cascadeProps = ElementTree.register.get("cascade");
         const [cascade, releaseCascade] = ElementTree.cascade(cascadeProps);
@@ -48,6 +50,7 @@ import { ElementTree } from "../../out/index.js";
                                 },
                                 {
                                     type: "p",
+                                    text: "this is a test",
                                     cascade: {
                                         origin: cascadeProps,
                                         receiver: (elm, cascadeProps) => {
@@ -55,27 +58,16 @@ import { ElementTree } from "../../out/index.js";
                                             cascadeProps.i++;
                                         },
                                     },
-                                    children: [
-                                        {
-                                            type: "text",
-                                            text: "this is a test",
-                                        },
-                                    ],
                                 },
                                 {
                                     type: "p",
+                                    text: "this is a test",
                                     cascade: {
                                         origin: cascadeProps,
                                         receiver: (elm, cascadeProps) => {
                                             elm.innerText = `cascaded : ${cascadeProps.i}`;
                                         },
                                     },
-                                    children: [
-                                        {
-                                            type: "text",
-                                            text: "this is a test",
-                                        },
-                                    ],
                                 },
                                 {
                                     type: "p",

@@ -113,4 +113,51 @@ export class ElementCreator {
   this._traverseElementTree(tree, frag);
   parentElm.append(frag);
  }
+
+ safetlyRemoveAll() {
+  document.body.innerHTML = "";
+  this.elementTree.controller.releaseAll();
+ }
+
+ safetlyRemoveElement(elm: HTMLElement) {
+  const cascadeElements: Record<string, HTMLElement[]> = {};
+  this._traverseRemoveElements(elm, cascadeElements);
+  for (const id of Object.keys(cascadeElements)) {
+   for (const cElm of cascadeElements[id]) {
+    this.elementTree.controller.releaseElementFromCascade(id, cElm);
+   }
+  }
+  elm.remove();
+ }
+
+ _traverseRemoveElements(
+  elm: HTMLElement,
+  cascadeElements: Record<string, HTMLElement[]>
+ ) {
+  if (elm.dataset["__cascade"]) {
+   const id = elm.dataset["__cascade"];
+   if (!cascadeElements[id]) {
+    cascadeElements[id] = [];
+   }
+   cascadeElements[id].push(elm);
+  }
+
+  if (elm.children.length > 0) {
+   for (let i = 0; i < elm.children.length; i++) {
+    const child = <HTMLElement>elm.children[i];
+
+    if (child.children.length > 0) {
+     this._traverseRemoveElements(child, cascadeElements);
+    } else {
+     if (child.dataset["__cascade"]) {
+      const id = child.dataset["__cascade"];
+      if (!cascadeElements[id]) {
+       cascadeElements[id] = [];
+      }
+      cascadeElements[id].push(child);
+     }
+    }
+   }
+  }
+ }
 }

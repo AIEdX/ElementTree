@@ -3,12 +3,12 @@
 </h1>
 
 <p align="center">
-<img src="https://i.ibb.co/Hqf8tjz/ettree-jpg.png" alt="ettree-jpg" border="0">
+<img src="https://i.ibb.co/Hqf8tjz/ettree-jpg.png">
 </p>
 
 ---
 
-A  simple TypeScript library for easily creating an interactive UI. 
+A simple TypeScript library for easily creating an interactive UI. It is specifically designed for Electron Apps. 
 
 It requires no bundler or transpiler. It can be used with TypeScript or plain JS. 
 
