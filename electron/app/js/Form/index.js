@@ -73,15 +73,15 @@ const formElement = () => {
 const dataDisplay = () => {
     return [
         {
-            type: "div",
+            type: "code",
             attrs: {
                 className: "data-display",
             },
-            text: JSON.stringify(formValues, undefined, 5),
+            text: JSON.stringify(formValues, undefined, 1),
             cascade: {
                 origin: cascadeProps,
                 receiver: (div, cascadeProps) => {
-                    div.innerText = JSON.stringify(formValues, undefined, 5);
+                    div.innerText = JSON.stringify(formValues, undefined, 1);
                 },
             },
         },

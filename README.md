@@ -8,15 +8,15 @@
 
 ---
 
-A simple TypeScript library for easily creating an interactive UI. It is more focused on making it easier to make desktop apps with tools like Electron. 
+A simple TypeScript library for easily creating an interactive UI. It's goal is to be as close to vanilla JS/TS as possible. It is also more focused on making it easier to make desktop apps with tools like Electron. 
 
-It requires no bundler or transpiler. It can be used with TypeScript or plain JS. 
+It requires no bundler, transpiler, or CLI. It can be used with TypeScript or vanilla JS. 
 
 You can make stateful components as well as stateless elements. Stateless elements can still be updated with cascade. Another feature is loading CSS modules and auto adding them to the page. 
 
 Check out the **electron** folder to see all working examples. 
 
-Here is simple clock example: 
+Here is a simple clock example: 
 
 ```ts
 import { ElementTree } from "ElementTree.js";

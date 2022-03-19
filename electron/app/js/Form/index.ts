@@ -51,6 +51,8 @@ const formValues = {
 
 ElementTree.linkCSS(import.meta.url, "index.css");
 
+
+
 const cascadeProps = {};
 const [cascade] = ElementTree.cascade(cascadeProps);
 
@@ -90,15 +92,15 @@ const formElement = (): ElementTreeData => {
 const dataDisplay = (): ElementTreeData => {
   return [
     {
-      type: "div",
+      type: "code",
       attrs: {
         className: "data-display",
       },
-      text: JSON.stringify(formValues, undefined, 5),
+      text: JSON.stringify(formValues, undefined, 1),
       cascade: {
         origin: cascadeProps,
         receiver: (div: HTMLElement, cascadeProps: any) => {
-          div.innerText = JSON.stringify(formValues, undefined, 5);
+          div.innerText = JSON.stringify(formValues, undefined, 1);
         },
       },
     },
