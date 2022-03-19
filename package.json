@@ -1,6 +1,6 @@
 {
   "name": "ds-element-tree",
-  "version": "0.0.4",
+  "version": "0.0.41",
   "description": "A TypeScript library for creating an interactive UI.",
   "type" : "module",
   "main": "out/index.js",
