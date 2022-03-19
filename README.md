@@ -14,7 +14,7 @@ It requires no bundler, transpiler, or CLI. It can be used with TypeScript or va
 
 You can make stateful components as well as stateless elements. Stateless elements can still be updated with cascade. Another feature is loading CSS modules and auto adding them to the page. 
 
-Check out the **electron** folder to see all working examples. 
+Check out the [wiki](https://github.com/Divine-Star-Software/ElementTree/wiki) and the **electron** folder to see all working examples. 
 
 Here is a simple clock example: 
 
