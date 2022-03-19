@@ -5,14 +5,21 @@ export class Controller {
         this.statefulObjectMap = {};
         this.cascadeObjectMap = {};
     }
+    releaseComponent(id) {
+        delete this.statefulObjectMap[id];
+    }
     //@ts-ignore
     elementTree;
-    registerStatefulComponent(elmObj, parentElm) {
+    registerStatefulComponent(elmObj, componentElm) {
         if (!elmObj.component) {
-            throw new Error("Stateful must only be used on component elements.");
+            throw new Error("Must have a the component property set.");
         }
+        if (!elmObj.component.stateProps.__id) {
+            throw new Error("Stateful props must be created through 'ElementTree.stateful'. Props do not contain id.");
+        }
+        componentElm.dataset["__componentid"] = elmObj.component.stateProps.__id;
         this.statefulObjectMap[elmObj.component.stateProps.__id] = {
-            parentElement: parentElm,
+            componentElement: componentElm,
             state: elmObj.component.stateObject,
             props: elmObj.component.stateProps,
             component: elmObj.component.func,
@@ -80,7 +87,7 @@ export class Controller {
         const data = this.statefulObjectMap[id];
         if (!data)
             return false;
-        return data.parentElement;
+        return data.componentElement;
     }
     runStateChange(props, newState, onChange = () => { }) {
         if (!props.__id)
@@ -89,14 +96,14 @@ export class Controller {
         if (!data)
             return false;
         data.state = newState;
-        const elm = data.parentElement;
+        const elm = data.componentElement;
         if (elm.children.length > 0) {
             for (let i = 0; i < elm.children.length; i++) {
                 this.elementTree.elementCreator.safetlyRemoveElement(elm.children[i]);
             }
         }
-        data.parentElement.innerHTML = "";
+        data.componentElement.innerHTML = "";
         onChange();
-        this.elementTree.elementCreator.createElements([data.component(props)[0]], data.parentElement);
+        this.elementTree.elementCreator.createElements([data.component(props)[0]], data.componentElement);
     }
 }

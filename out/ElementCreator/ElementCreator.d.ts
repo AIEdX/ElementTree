@@ -11,5 +11,5 @@ export declare class ElementCreator {
     createElements(tree: ElementTreeData, parentElm: HTMLElement): void;
     safetlyRemoveAll(): void;
     safetlyRemoveElement(elm: HTMLElement): void;
-    _traverseRemoveElements(elm: HTMLElement, cascadeElements: Record<string, HTMLElement[]>): void;
+    _traverseRemoveElements(elm: HTMLElement, cascadeElements: Record<string, HTMLElement[]>, components: string[]): void;
 }

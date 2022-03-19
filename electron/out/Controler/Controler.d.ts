@@ -2,7 +2,7 @@ import type { ElementTreeInterface } from "Meta/ElementTree.interface";
 import { ElementTreeObject } from "Meta/Elements/ElementTreeData.types";
 export declare class Controller {
     statefulObjectMap: Record<string, {
-        parentElement: HTMLElement;
+        componentElement: HTMLElement;
         state: any;
         props: any;
         component: Function;
@@ -12,8 +12,9 @@ export declare class Controller {
         props: any;
     }>;
     releaseAll(): void;
+    releaseComponent(id: string): void;
     elementTree: ElementTreeInterface;
-    registerStatefulComponent(elmObj: ElementTreeObject, parentElm: HTMLElement): void;
+    registerStatefulComponent(elmObj: ElementTreeObject, componentElm: HTMLElement): void;
     generateCascadeId(props: any): any;
     registerCascadeElement(elmObj: ElementTreeObject, elm: HTMLElement): void;
     runCascade(props: any): boolean;

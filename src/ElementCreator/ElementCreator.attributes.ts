@@ -142,11 +142,7 @@ export const attributeSetFunction: Record<ElementAttributeList, Function> = {
  },
  aria: (
   elm:
-   | HTMLInputElement
-   | HTMLElement
-   | HTMLImageElement
-   | HTMLTextAreaElement
-   | HTMLAudioElement,
+   | HTMLInputElement,
   data: ElementAttributes
  ) => {
   if (!data.aria) return;

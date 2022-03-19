@@ -100,15 +100,19 @@ export class ElementCreator {
     }
     safetlyRemoveElement(elm) {
         const cascadeElements = {};
-        this._traverseRemoveElements(elm, cascadeElements);
+        const components = [];
+        this._traverseRemoveElements(elm, cascadeElements, components);
         for (const id of Object.keys(cascadeElements)) {
             for (const cElm of cascadeElements[id]) {
                 this.elementTree.controller.releaseElementFromCascade(id, cElm);
             }
         }
+        for (const compoent of components) {
+            this.elementTree.controller.releaseComponent(compoent);
+        }
         elm.remove();
     }
-    _traverseRemoveElements(elm, cascadeElements) {
+    _traverseRemoveElements(elm, cascadeElements, components) {
         if (elm.dataset["__cascade"]) {
             const id = elm.dataset["__cascade"];
             if (!cascadeElements[id]) {
@@ -116,11 +120,14 @@ export class ElementCreator {
             }
             cascadeElements[id].push(elm);
         }
+        if (elm.dataset["__componentid"]) {
+            components.push(elm.dataset["__componentid"]);
+        }
         if (elm.children.length > 0) {
             for (let i = 0; i < elm.children.length; i++) {
                 const child = elm.children[i];
                 if (child.children.length > 0) {
-                    this._traverseRemoveElements(child, cascadeElements);
+                    this._traverseRemoveElements(child, cascadeElements, components);
                 }
                 else {
                     if (child.dataset["__cascade"]) {
@@ -129,6 +136,9 @@ export class ElementCreator {
                             cascadeElements[id] = [];
                         }
                         cascadeElements[id].push(child);
+                    }
+                    if (child.dataset["__componentid"]) {
+                        components.push(child.dataset["__componentid"]);
                     }
                 }
             }
