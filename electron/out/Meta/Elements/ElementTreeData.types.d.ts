@@ -3,6 +3,11 @@ import { ElementAttributes } from "./ElementAttributes.types";
 export declare type ElementTypes = "component" | "rawHTML" | "fragment" | "div" | "span" | "pre" | "code" | "embed" | "object" | "param" | "picture" | "source" | "audio" | "video" | "track" | "img" | "svg" | "ul" | "ol" | "li" | "nav" | "article" | "aside" | "section" | "header" | "footer" | "form" | "input" | "label" | "textarea" | "select" | "option" | "optiongroup" | "datalist" | "button" | "hr" | "a" | "canvas" | "iframe" | "table" | "th" | "thead" | "tbody" | "colgroup" | "tr" | "td" | "text" | "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 export declare type ElementEvents = "onInput" | "onReset" | "onSearch" | "onChange" | "onClick" | "onDoubleClick" | "onContextMenu" | "onKeyDown" | "onKeyUp" | "onKeyPress" | "onTouchStart" | "onTouchEnd" | "onTouchMove" | "onTouchStart" | "onWheel" | "onMouseUp" | "onMouseDown" | "onMouseOver" | "onMouseOver" | "onMouseEnter" | "onMouseMove" | "onMouseLeave" | "onFocus" | "onFocusIn" | "onFocusOut" | "onBlur" | "onSelect" | "onCopy" | "onCut" | "onPaste" | "onDrag" | "onDragEnd" | "onDragStart" | "onDrop";
 export declare type InputValueTypes = "string" | "number" | "boolean";
+export declare type InputBindData = {
+    bindTo: any;
+    objectPropertyName: string;
+    valueType: InputValueTypes;
+};
 export declare type ElementTreeObject = {
     type: ElementTypes;
     component?: {
@@ -14,11 +19,7 @@ export declare type ElementTreeObject = {
         origin: any;
         receiver: (elm: any, cascadeProps: any) => void;
     };
-    bindInput?: {
-        bindTo: any;
-        objectPropertyName: string;
-        valueType: InputValueTypes;
-    };
+    bindInput?: InputBindData;
     toRef?: {
         refObj: any;
         refObjProperty: string;

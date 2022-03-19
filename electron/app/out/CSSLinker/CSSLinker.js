@@ -1,6 +1,6 @@
 export class CSSLinker {
     loadedCSS = {};
-    async loadAndAppendCSS(path, moduleMetaURL) {
+    async loadAndAppendCSS(moduleMetaURL, path) {
         const url = new URL(path, moduleMetaURL);
         if (this.loadedCSS[url.href])
             return;

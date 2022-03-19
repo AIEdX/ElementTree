@@ -6,7 +6,7 @@ const cssModule = await import('./p.css', {
 
 console.log(cssModule) */
 import { ElementTree } from "../../../out/ElementTree.js";
-ElementTree.registerCSS("p.css", import.meta.url);
+ElementTree.linkCSS(import.meta.url, "p.css");
 export const PElement = (text, className) => {
     return [
         {

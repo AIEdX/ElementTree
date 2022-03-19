@@ -76,7 +76,7 @@ export class Controller {
         return Math.floor((1 + Math.random()) * 0x1000000).toString(16);
     }
     getId() {
-        return `${this.__unqiueId4()}-${this.__unqiueId4()}`;
+        return `${this.__unqiueId4()}-${this.__unqiueId4()}-${this.__unqiueId4()}`;
     }
     getStateObject(id) {
         if (!this.statefulObjectMap[id])

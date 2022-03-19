@@ -108,7 +108,7 @@ export class Controller {
  }
 
  getId() {
-  return `${this.__unqiueId4()}-${this.__unqiueId4()}`;
+  return `${this.__unqiueId4()}-${this.__unqiueId4()}-${this.__unqiueId4()}`;
  }
 
  getStateObject<T>(id: string): T | false {

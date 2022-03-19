@@ -9,7 +9,7 @@ console.log(cssModule) */
 
 import { ElementTree } from "../../../out/ElementTree.js";
 
-ElementTree.registerCSS("p.css",import.meta.url);
+ElementTree.linkCSS(import.meta.url,"p.css");
 
 import type { ElementTreeData } from "../../../out/Meta/Elements/ElementTreeData.types";
 export const PElement = (text: string, className: string): ElementTreeData => {

@@ -3,7 +3,6 @@ const processComponent = (elmObj, elementCreator) => {
         throw new Error('A component must have the "component" propety set.');
     }
     const elm = document.createElement("component");
-    elm.dataset["component_name"] = elmObj.component.func.name;
     elementCreator.elementTree.controller.registerStatefulComponent(elmObj, elm);
     return elm;
 };

@@ -1,4 +1,4 @@
 export declare class CSSLinker {
     loadedCSS: Record<string, boolean>;
-    loadAndAppendCSS(path: string, moduleMetaURL: string): Promise<void>;
+    loadAndAppendCSS(moduleMetaURL: string, path: string): Promise<void>;
 }

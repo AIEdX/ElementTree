@@ -10,7 +10,7 @@ export declare const ElementTree: {
     bloomBranch: (tree: ElementTreeData, elm: HTMLElement) => void;
     decayRoot: () => void;
     decayBranch: (elm: HTMLElement) => void;
-    registerCSS: (path: string, importMetalURL: string) => void;
+    linkCSS: (importMetalURL: string, path: string) => void;
     stateful: <K, T>(props: K, data: T, onChange?: Function) => [T, (set: Record<keyof T, any>) => void, K];
     cascade: (props: any) => [() => boolean, () => boolean];
     register: {

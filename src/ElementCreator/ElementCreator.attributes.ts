@@ -55,87 +55,87 @@ export const attributeSetFunction: Record<ElementAttributeList, Function> = {
  th: (elm: any, data: ElementAttributes) => {
   if (!data.th) return;
   for (const key of Object.keys(data.th)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).th[key];
    }
   }
  },
  td: (elm: any, data: ElementAttributes) => {
   if (!data.td) return;
   for (const key of Object.keys(data.td)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).td[key];
    }
   }
  },
  img: (elm: any, data: ElementAttributes) => {
   if (!data.img) return;
   for (const key of Object.keys(data.img)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).img[key];
    }
   }
  },
  label: (elm: any, data: ElementAttributes) => {
   if (!data.label) return;
   for (const key of Object.keys(data.label)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).label[key];
    }
   }
  },
  input: (elm: any, data: ElementAttributes) => {
   if (!data.input) return;
   for (const key of Object.keys(data.input)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).input[key];
    }
   }
  },
  textarea: (elm: any, data: ElementAttributes) => {
   if (!data.textarea) return;
   for (const key of Object.keys(data.textarea)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).textarea[key];
    }
   }
  },
  audio: (elm: any, data: ElementAttributes) => {
   if (!data.audio) return;
   for (const key of Object.keys(data.audio)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).audio[key];
    }
   }
  },
  video: (elm: any, data: ElementAttributes) => {
   if (!data.video) return;
   for (const key of Object.keys(data.video)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).video[key];
    }
   }
  },
  track: (elm: any, data: ElementAttributes) => {
   if (!data.track) return;
   for (const key of Object.keys(data.track)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).track[key];
    }
   }
  },
  anchor: (elm: any, data: ElementAttributes) => {
   if (!data.anchor) return;
   for (const key of Object.keys(data.anchor)) {
-   if (!elm[key]) {
-    elm[key] = (data as any).form[key];
+   if (elm[key]) {
+    elm[key] = (data as any).anchor[key];
    }
   }
  },
  form: (elm: any, data: ElementAttributes) => {
   if (!data.form) return;
   for (const key of Object.keys(data.form)) {
-   if (!elm[key]) {
+   if (elm[key]) {
     elm[key] = (data as any).form[key];
    }
   }

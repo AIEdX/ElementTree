@@ -18,8 +18,8 @@ export const ElementTree = {
 
  decayRoot: function () {},
  decayBranch: function (elm: HTMLElement) {},
- registerCSS: function (path: string, importMetalURL: string) {
-  this.CSSLinker.loadAndAppendCSS(path, importMetalURL);
+ linkCSS: function (importMetalURL: string , path: string, ) {
+  this.CSSLinker.loadAndAppendCSS(importMetalURL, path) ;
  },
  stateful: function <K, T>(
   props: K,
