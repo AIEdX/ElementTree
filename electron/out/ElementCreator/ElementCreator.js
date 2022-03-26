@@ -6,17 +6,6 @@ export class ElementCreator {
     elementCreateFunctions = elementCreateFunctions;
     elemntEventFunctions = elementEventFunctions;
     elementTree;
-    inputFunctions = {
-        string: (elm) => {
-            return String(elm.value);
-        },
-        number: (elm) => {
-            return Number(elm.value);
-        },
-        boolean: (elm) => {
-            return Boolean(elm.value);
-        },
-    };
     constructor() { }
     _traverseElementTree(tree, parentElm) {
         for (const elmObj of tree) {
@@ -51,21 +40,7 @@ export class ElementCreator {
                 this.elementTree.controller.registerCascadeElement(elmObj, elm);
             }
             if (elmObj.bindInput) {
-                elm.dataset["value_type"] =
-                    elmObj.bindInput.valueType;
-                const bound = elmObj.bindInput.bindTo;
-                const boundKey = elmObj.bindInput.objectPropertyName;
-                elm.value = bound[boundKey];
-                elm.addEventListener("input", (ev) => {
-                    if (!ev.target)
-                        return;
-                    const target = ev.target;
-                    const valueType = target.dataset["value_type"];
-                    if (!valueType)
-                        return;
-                    const newInput = this.inputFunctions[valueType](target);
-                    bound[boundKey] = newInput;
-                });
+                this.elementTree.controller.bindInput(elm, elmObj);
             }
             if (elmObj.toRef) {
                 elmObj.toRef.refObj[elmObj.toRef.refObjProperty] = elm;

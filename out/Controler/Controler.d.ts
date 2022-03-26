@@ -1,6 +1,7 @@
 import type { ElementTreeInterface } from "Meta/ElementTree.interface";
-import { ElementTreeObject } from "Meta/Elements/ElementTreeData.types";
+import type { ElementTreeObject, InputValueTypes } from "Meta/Elements/ElementTreeData.types";
 export declare class Controller {
+    inputFunctions: Record<InputValueTypes, (elm: HTMLInputElement) => void>;
     statefulObjectMap: Record<string, {
         componentElement: HTMLElement;
         state: any;
@@ -25,4 +26,5 @@ export declare class Controller {
     getStateObject<T>(id: string): T | false;
     getComponentElement(id: string): false | HTMLElement;
     runStateChange(props: any, newState: any, onChange?: Function): false | undefined;
+    bindInput(elm: HTMLInputElement, elmObj: ElementTreeObject): void;
 }

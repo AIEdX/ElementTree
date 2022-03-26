@@ -107,6 +107,7 @@ export type ElementTreeObject = {
     func: Component<any>;
     stateProps: any;
     stateObject: Readonly<any>;
+    element:  Exclude<ElementTypes, "component" | "fragment">;
   };
   cascade?: {
     origin: any;

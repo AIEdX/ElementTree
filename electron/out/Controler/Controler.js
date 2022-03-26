@@ -1,4 +1,24 @@
 export class Controller {
+    inputFunctions = {
+        string: (elm) => {
+            if (elm.type == "checkbox") {
+                return elm.checked ? "true" : "false";
+            }
+            return String(elm.value);
+        },
+        number: (elm) => {
+            if (elm.type == "checkbox") {
+                return elm.checked ? 1 : 0;
+            }
+            return Number(elm.value);
+        },
+        boolean: (elm) => {
+            if (elm.type == "checkbox") {
+                return elm.checked ? true : false;
+            }
+            return Boolean(elm.value);
+        },
+    };
     statefulObjectMap = {};
     cascadeObjectMap = {};
     releaseAll() {
@@ -105,5 +125,24 @@ export class Controller {
         data.componentElement.innerHTML = "";
         onChange();
         this.elementTree.elementCreator.createElements([data.component(props)[0]], data.componentElement);
+    }
+    bindInput(elm, elmObj) {
+        if (!elmObj.bindInput)
+            return;
+        elm.dataset["value_type"] =
+            elmObj.bindInput.valueType;
+        const bound = elmObj.bindInput.bindTo;
+        const boundKey = elmObj.bindInput.objectPropertyName;
+        elm.value = bound[boundKey];
+        elm.addEventListener("input", (ev) => {
+            if (!ev.target)
+                return;
+            const target = ev.target;
+            const valueType = target.dataset["value_type"];
+            if (!valueType)
+                return;
+            const newInput = this.inputFunctions[valueType](target);
+            bound[boundKey] = newInput;
+        });
     }
 }

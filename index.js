@@ -1,8 +1,8 @@
 import { exec } from "child_process";
 const urls = [];
-urls.push("https://truck-hero.com/");
+urls.push("https://undercoverinfo.com");
 exec(
- "curl https://truck-hero.com/sitemaps/categories.xml",
+ "curl https://undercoverinfo.com/sitemaps/categories.xml",
  (error, stdout, stderr) => {
   const regex = /<loc>(.*?)<\/loc>/g;
   const content = stdout;

@@ -2,7 +2,7 @@ const processComponent = (elmObj, elementCreator) => {
     if (!elmObj.component) {
         throw new Error('A component must have the "component" propety set.');
     }
-    const elm = document.createElement("component");
+    const elm = elementCreator.elementCreateFunctions[elmObj.component.element](elmObj, elementCreator);
     elementCreator.elementTree.controller.registerStatefulComponent(elmObj, elm);
     return elm;
 };
