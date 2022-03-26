@@ -4,6 +4,9 @@ const processComponent = (elmObj, elementCreator) => {
     }
     const elm = elementCreator.elementCreateFunctions[elmObj.component.element](elmObj, elementCreator);
     elementCreator.elementTree.controller.registerStatefulComponent(elmObj, elm);
+    if (elmObj.cascade) {
+        elementCreator.elementTree.controller.registerCascadeElement(elmObj, elm);
+    }
     return elm;
 };
 export const elementCreateFunctions = {

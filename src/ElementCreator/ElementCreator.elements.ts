@@ -17,6 +17,17 @@ const processComponent = (
     elementCreator
   );
   elementCreator.elementTree.controller.registerStatefulComponent(elmObj, elm);
+  if (elmObj.cascade) {
+    elementCreator.elementTree.controller.registerCascadeElement(elmObj, elm);
+  }
+  if (elmObj.attrs) {
+    for (const attribute of Object.keys(elmObj.attrs)) {
+      (elementCreator as any).attributeSetFunction[attribute](
+        elm,
+        elmObj.attrs
+      );
+    }
+  }
   return elm;
 };
 

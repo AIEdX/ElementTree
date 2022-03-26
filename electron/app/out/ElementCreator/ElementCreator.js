@@ -24,7 +24,7 @@ export class ElementCreator {
                         }
                     }
                 }
-                if (parentElm.tagName == "component") {
+                if (parentElm.dataset && parentElm.dataset["__componentid"]) {
                     this._traverseElementTree(elmObj.children, parentElm);
                     continue;
                 }

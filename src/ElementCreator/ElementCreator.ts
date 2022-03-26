@@ -41,7 +41,7 @@ export class ElementCreator {
           }
         }
 
-        if ((parentElm as any).tagName == "component") {
+        if ((parentElm as any).dataset &&  (parentElm as HTMLElement).dataset["__componentid"]) {
           this._traverseElementTree(elmObj.children, parentElm);
           continue;
         } else {
