@@ -7,6 +7,11 @@ const processComponent = (elmObj, elementCreator) => {
     if (elmObj.cascade) {
         elementCreator.elementTree.controller.registerCascadeElement(elmObj, elm);
     }
+    if (elmObj.attrs) {
+        for (const attribute of Object.keys(elmObj.attrs)) {
+            elementCreator.attributeSetFunction[attribute](elm, elmObj.attrs);
+        }
+    }
     return elm;
 };
 export const elementCreateFunctions = {

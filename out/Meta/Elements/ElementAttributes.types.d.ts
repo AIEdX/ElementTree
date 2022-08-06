@@ -14,6 +14,7 @@ export declare type ElementAttributes = {
     tabindex?: number;
     translate?: boolean;
     img?: {
+        src: string;
         alt?: string;
         crossorigin?: "anonymous" | "use-credentials";
         width?: number;
@@ -80,7 +81,7 @@ export declare type ElementAttributes = {
         readonly?: boolean;
         size?: number;
         src?: string;
-        step?: number;
+        step?: number | "any";
     };
     textarea?: {
         autofocus?: boolean;
