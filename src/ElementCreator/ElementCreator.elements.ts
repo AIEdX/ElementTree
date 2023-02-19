@@ -1,13 +1,14 @@
 import type {
   ElementTreeObject,
   ElementTypes,
-} from "Meta/Elements/ElementTreeData.types";
+} from "../Meta/Elements/ElementTreeData.types";
 import type { ElementCreator } from "./ElementCreator";
 
 const processComponent = (
   elmObj: ElementTreeObject,
   elementCreator: ElementCreator
 ) => {
+
   if (!elmObj.component) {
     throw new Error('A component must have the "component" propety set.');
   }

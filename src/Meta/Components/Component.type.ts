@@ -1,7 +1,7 @@
 import type {
  ElementTreeObject,
  ElementTreeData,
-} from "Meta/Elements/ElementTreeData.types";
+} from "../Elements/ElementTreeData.types";
 
 export type BaseComponentProps = {
  children?: ElementTreeData;

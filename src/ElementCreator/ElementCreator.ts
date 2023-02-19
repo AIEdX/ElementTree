@@ -1,9 +1,5 @@
-import type { ElementTreeInterface } from "Meta/ElementTree.interface.js";
-import type {
-  ElementTreeData,
-  ElementTreeObject,
-  InputValueTypes,
-} from "Meta/Elements/ElementTreeData.types";
+import type { ElementTreeInterface } from "../Meta/ElementTree.interface.js";
+import type { ElementTreeData } from "../Meta/Elements/ElementTreeData.types";
 import { attributeSetFunction } from "./ElementCreator.attributes.js";
 import { elementCreateFunctions } from "./ElementCreator.elements.js";
 import { elementEventFunctions } from "./ElementCreator.events.js";
@@ -14,8 +10,6 @@ export class ElementCreator {
   elemntEventFunctions = elementEventFunctions;
 
   elementTree: ElementTreeInterface;
-
-
 
   constructor() {}
 
@@ -41,7 +35,10 @@ export class ElementCreator {
           }
         }
 
-        if ((parentElm as any).dataset &&  (parentElm as HTMLElement).dataset["__componentid"]) {
+        if (
+          (parentElm as any).dataset &&
+          (parentElm as HTMLElement).dataset["__componentid"]
+        ) {
           this._traverseElementTree(elmObj.children, parentElm);
           continue;
         } else {
@@ -58,7 +55,7 @@ export class ElementCreator {
       }
 
       if (elmObj.bindInput) {
-          this.elementTree.controller.bindInput(elm,elmObj);
+        this.elementTree.controller.bindInput(elm, elmObj);
       }
 
       if (elmObj.toRef) {

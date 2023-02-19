@@ -1,9 +1,9 @@
-import type { ElementTreeInterface } from "Meta/ElementTree.interface";
+import type { ElementTreeInterface } from "../Meta/ElementTree.interface";
 import type {
   ElementTreeData,
   ElementTreeObject,
   InputValueTypes,
-} from "Meta/Elements/ElementTreeData.types";
+} from "../Meta/Elements/ElementTreeData.types";
 export class Controller {
   inputFunctions: Record<InputValueTypes, (elm: HTMLInputElement) => void> = {
     string: (elm: HTMLInputElement) => {

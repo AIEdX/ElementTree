@@ -1,7 +1,7 @@
 {
     "sources": [
         {
-            "dir": "D:/DSSoftware/DSLIBS/elementTree/out",
+            "dir": "D:/DSSoftware/DSLIBS/elementTree/dist",
             "fileExtensions": [
                 "js","d.ts"
             ],
@@ -10,13 +10,13 @@
     ],
     "outputs": [
         {
-            "dir": "D:/DSSoftware/DSLIBS/elementTree/electron/out",
+            "dir": "D:/DSSoftware/DSLIBS/elementTree/electron/dist",
             "sourceID": "main",
             "codeSection": "All",
             "keepComments": true
         },
         {
-            "dir": "D:/DSSoftware/DSLIBS/elementTree/electron/app/out",
+            "dir": "D:/DSSoftware/DSLIBS/elementTree/electron/app/dist",
             "sourceID": "main",
             "codeSection": "All",
             "keepComments": true

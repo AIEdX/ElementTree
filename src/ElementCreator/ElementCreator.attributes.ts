@@ -1,7 +1,7 @@
 import {
   ElementAttributeList,
   ElementAttributes,
-} from "Meta/Elements/ElementAttributes.types";
+} from "../Meta/Elements/ElementAttributes.types";
 
 export const attributeSetFunction: Record<ElementAttributeList, Function> = {
   id: (elm: HTMLElement, data: ElementAttributes) => {

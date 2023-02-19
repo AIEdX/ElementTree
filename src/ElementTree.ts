@@ -1,7 +1,5 @@
 import { CSSLinker } from "./CSSLinker/CSSLinker.js";
-import { Component } from "Meta/Components/Component.type.js";
-import { ElementTreeData } from "Meta/Elements/ElementTreeData.types.js";
-import { ElementTreeInterface } from "Meta/ElementTree.interface.js";
+import { ElementTreeData } from "./Meta/Elements/ElementTreeData.types.js";
 import { Controller } from "./Controler/Controler.js";
 import { ElementCreator } from "./ElementCreator/ElementCreator.js";
 

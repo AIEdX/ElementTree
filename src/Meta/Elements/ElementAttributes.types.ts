@@ -129,12 +129,13 @@ export type ElementAttributes = {
   minlength?: number;
   multiple?: boolean;
   pattern?: string;
-  readonly?: boolean;
+  readOnly?: boolean;
   size?: number;
   src?: string;
   step?: number | "any";
  };
  textarea?: {
+  readOnly ?: boolean;
   autofocus?: boolean;
   cols?: number;
   rows?: number;

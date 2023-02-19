@@ -1,4 +1,4 @@
-import { Component } from "Meta/Components/Component.type";
+import { Component } from "../Components/Component.type";
 import { ElementAttributes } from "./ElementAttributes.types";
 
 export type ElementTypes =
